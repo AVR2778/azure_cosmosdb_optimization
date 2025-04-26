@@ -1,0 +1,91 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="500" fill="#f5f5f5" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">Tiered Storage Architecture for Billing Records</text>
+  
+  <!-- Azure Cloud Border -->
+  <rect x="50" y="70" width="700" height="380" fill="#e6f7ff" stroke="#0078d4" stroke-width="2" rx="10" ry="10" />
+  <text x="400" y="90" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Azure Cloud</text>
+  
+  <!-- API Gateway -->
+  <rect x="350" y="110" width="120" height="60" fill="#0078d4" stroke="#005a9e" stroke-width="2" rx="5" ry="5" />
+  <text x="410" y="145" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">API Gateway</text>
+  
+  <!-- Function App -->
+  <rect x="350" y="230" width="120" height="60" fill="#0078d4" stroke="#005a9e" stroke-width="2" rx="5" ry="5" />
+  <text x="410" y="265" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Function App</text>
+  
+  <!-- Cosmos DB -->
+  <g transform="translate(180, 320)">
+    <rect x="0" y="0" width="120" height="80" fill="#3e3e3e" stroke="#000000" stroke-width="2" rx="5" ry="5" />
+    <text x="60" y="30" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Cosmos DB</text>
+    <text x="60" y="50" font-family="Arial" font-size="12" fill="#cccccc" text-anchor="middle">(Hot Tier)</text>
+    <text x="60" y="65" font-family="Arial" font-size="10" fill="#cccccc" text-anchor="middle">Recent Records</text>
+  </g>
+  
+  <!-- Lookup Table -->
+  <g transform="translate(180, 230)">
+    <rect x="0" y="0" width="120" height="60" fill="#559944" stroke="#447733" stroke-width="2" rx="5" ry="5" />
+    <text x="60" y="30" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Lookup Table</text>
+    <text x="60" y="45" font-family="Arial" font-size="10" fill="#eeffee" text-anchor="middle">(Cosmos DB)</text>
+  </g>
+  
+  <!-- Blob Storage -->
+  <g transform="translate(520, 320)">
+    <rect x="0" y="0" width="120" height="80" fill="#773333" stroke="#551111" stroke-width="2" rx="5" ry="5" />
+    <text x="60" y="30" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Blob Storage</text>
+    <text x="60" y="50" font-family="Arial" font-size="12" fill="#ffcccc" text-anchor="middle">(Cold Tier)</text>
+    <text x="60" y="65" font-family="Arial" font-size="10" fill="#ffcccc" text-anchor="middle">Archived Records</text>
+  </g>
+  
+  <!-- Timer Trigger -->
+  <g transform="translate(350, 380)">
+    <rect x="0" y="0" width="120" height="40" fill="#996633" stroke="#664411" stroke-width="2" rx="5" ry="5" />
+    <text x="60" y="25" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Timer Trigger</text>
+  </g>
+  
+  <!-- Client -->
+  <g transform="translate(350, 10)">
+    <rect x="0" y="0" width="120" height="40" fill="#666666" stroke="#333333" stroke-width="2" rx="5" ry="5" />
+    <text x="60" y="25" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Client App</text>
+  </g>
+  
+  <!-- Connections -->
+  <!-- Client to API -->
+  <line x1="410" y1="50" x2="410" y2="110" stroke="#333333" stroke-width="2" />
+  
+  <!-- API to Function App -->
+  <line x1="410" y1="170" x2="410" y2="230" stroke="#333333" stroke-width="2" />
+  
+  <!-- Function App to Lookup -->
+  <line x1="350" y1="260" x2="300" y2="260" stroke="#333333" stroke-width="2" />
+  
+  <!-- Lookup to Cosmos -->
+  <line x1="240" y1="290" x2="240" y2="320" stroke="#333333" stroke-width="2" />
+  
+  <!-- Function App to Blob -->
+  <line x1="470" y1="260" x2="520" y2="260" stroke="#333333" stroke-width="2" />
+  <line x1="520" y1="260" x2="580" y2="320" stroke="#333333" stroke-width="2" />
+  
+  <!-- Timer to Function -->
+  <line x1="410" y1="380" x2="410" y2="290" stroke="#333333" stroke-width="2" />
+  
+  <!-- Data Flow -->
+  <!-- Write Flow -->
+  <path d="M 480 120 Q 550 120 550 200 Q 550 280 530 320" fill="none" stroke="#00aaff" stroke-width="2" stroke-dasharray="5,5" />
+  <text x="600" y="200" font-family="Arial" font-size="12" fill="#00aaff">Write Flow</text>
+  
+  <!-- Read Flow Recent -->
+  <path d="M 340 120 Q 270 120 270 200 Q 270 280 290 320" fill="none" stroke="#44cc44" stroke-width="2" stroke-dasharray="5,5" />
+  <text x="200" y="200" font-family="Arial" font-size="12" fill="#44cc44">Read Flow (Recent)</text>
+  
+  <!-- Read Flow Archived -->
+  <path d="M 320 140 Q 120 140 120 360 Q 220 400 350 400 Q 480 400 580 360" fill="none" stroke="#cc4444" stroke-width="2" stroke-dasharray="5,5" />
+  <text x="150" y="420" font-family="Arial" font-size="12" fill="#cc4444">Read Flow (Archived)</text>
+  
+  <!-- Archive Process -->
+  <path d="M 290 330 Q 350 330 410 350 Q 470 330 520 330" fill="none" stroke="#ddaa44" stroke-width="2" stroke-dasharray="5,5" />
+  <text x="410" y="325" font-family="Arial" font-size="12" fill="#ddaa44">Archive Process</text>
+</svg>
